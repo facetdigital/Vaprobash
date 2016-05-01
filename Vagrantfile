@@ -30,6 +30,15 @@ additional_hostnames = [
   "search.#{hostname}"
 ]
 
+# TODO: If you want any host ports forwarded to guest ports,
+#       add them here:
+forwarded_ports = {
+  # host_port => guest_port
+  # E.g.:
+
+  # 8000 => 80
+}
+
 # Set a local private network IP address.
 # See http://en.wikipedia.org/wiki/Private_network for explanation
 # You can use the following IP ranges:
@@ -141,7 +150,9 @@ Vagrant.configure("2") do |config|
     config.vm.network :private_network, :ip => "0.0.0.0", :auto_network => true
   else
     config.vm.network :private_network, ip: server_ip
-    config.vm.network :forwarded_port, guest: 80, host: 8000
+    forwarded_ports.each_pair do |host, guest|
+      config.vm.network :forwarded_port, guest: guest, host: host
+    end
   end
 
   # Enable agent forwarding over SSH connections
