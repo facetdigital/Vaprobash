@@ -57,5 +57,5 @@ fi
 if [[ ! -z $RUBY_GEMS ]]; then
     echo ">>> Start installing Ruby Gems"
 
-    gem install ${RUBY_GEMS[@]}
+    sudo gem install ${RUBY_GEMS[@]}
 fi
