@@ -13,7 +13,12 @@ github_pat          = ""
 
 # Server Configuration
 
-hostname        = "vaprobash.dev"
+hostname             = "vaprobash.dev"
+additional_hostnames = [
+  "app.#{hostname}",
+  "mail.#{hostname}",
+  "search.#{hostname}"
+]
 
 # Set a local private network IP address.
 # See http://en.wikipedia.org/wiki/Private_network for explanation
@@ -106,8 +111,10 @@ Vagrant.configure("2") do |config|
 
   # Create a hostname, don't forget to put it to the `hosts` file
   # This will point to the server's default virtual host
-  # TO DO: Make this work with virtualhost along-side xip.io URL
   config.vm.hostname = hostname
+  if Vagrant.has_plugin?("vagrant-ghost")
+    config.ghost.hosts = additional_hostnames
+  end
 
   # Create a static IP
   if Vagrant.has_plugin?("vagrant-auto_network")
