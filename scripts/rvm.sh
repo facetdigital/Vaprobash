@@ -62,3 +62,9 @@ fi
 
 # Add vagrant user to rvm group
 sudo usermod -a -G rvm vagrant
+
+# Automatically ignore the .rvmrc warning in our app project directory.
+rvm rvmrc warning ignore /vagrant/.rvmrc
+
+# Automatically trust any .rvmrc in our app project directory.
+rvm rvmrc trust /vagrant/.rvmrc
