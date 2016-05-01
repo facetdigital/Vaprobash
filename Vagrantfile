@@ -13,7 +13,7 @@ github_pat          = ""
 
 # Server Configuration
 
-hostname             = "vaprobash.dev"
+hostname             = "vaprobash.test"
 additional_hostnames = [
   "app.#{hostname}",
   "mail.#{hostname}",
