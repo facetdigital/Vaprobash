@@ -59,3 +59,6 @@ if [[ ! -z $RUBY_GEMS ]]; then
 
     sudo gem install ${RUBY_GEMS[@]}
 fi
+
+# Add vagrant user to rvm group
+sudo usermod -a -G rvm vagrant
