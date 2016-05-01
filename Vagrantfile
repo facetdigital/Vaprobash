@@ -63,6 +63,10 @@ server_timezone  = "UTC"
 
 #------------------------------------------------------------
 # Package Settings - Good Defaults, Customize as Needed
+#
+#   TODO: For Rails projects, set ruby_version, but probably
+#         ignore ruby_gems and let your project bundler
+#         handle that.
 #------------------------------------------------------------
 
 # Database Configuration
