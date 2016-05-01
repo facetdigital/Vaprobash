@@ -1,4 +1,26 @@
-# Vaprobash
+# Vaprobash - Facet Digital Fork
+
+We have made some minor customizations to this. The original README is below.
+
+For Facet projects, we setup a new project with a VM infrastructure like this:
+
+  * Go into specific project root directory.
+
+  * Grab the Vagrantfile with:
+
+    ```
+    wget https://raw.githubusercontent.com/facetdigital/Vaprobash/master/Vagrantfile
+    ```
+
+  * Edit that Vagrant file and read and act on all the `TODO` comments in the file.
+
+  * Commit that Vagrant file to the project repository.
+
+  * Bring up the VM with `vagrant up`
+
+That should more-or-less cover it.  Original README docs below.
+
+----
 
 **Va**&#x200B;grant **Pro**&#x200B;visioning **Bash** Scripts
 
