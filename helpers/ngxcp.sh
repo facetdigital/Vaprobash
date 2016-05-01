@@ -49,9 +49,9 @@ cat <<EOF
         charset utf-8;
 
         location / {
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header Host $http_host;
+            proxy_set_header X-Real-IP \$remote_addr;
+            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+            proxy_set_header Host \$http_host;
             proxy_redirect off;
             proxy_pass http://$UpstreamServer;
             break;
@@ -77,10 +77,10 @@ cat <<EOF
         charset utf-8;
 
         location / {
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Real-IP \$remote_addr;
+            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
             proxy_set_header X-Forwarded-Proto https;
-            proxy_set_header Host $http_host;
+            proxy_set_header Host \$http_host;
             proxy_redirect off;
             proxy_pass http://$UpstreamServer;
             break;
@@ -91,7 +91,7 @@ EOF
 
 # Check if there are enough arguments provided (2 arguments and there 2 values)
 if [[ $# -lt 4 ]]; then
-    echo "!!! Not enough arguments. Please read the below for NGXCB useage:"
+    echo "!!! Not enough arguments. Please read the below for NGXCP useage:"
     show_usage
 fi
 
