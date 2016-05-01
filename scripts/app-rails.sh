@@ -3,5 +3,5 @@
 echo ">>> Initializing Rails App"
 
 cd /vagrant
-bundle install
-rake db:setup
+su vagrant -c "bundle install"
+su vagrant -c "rake db:setup"
