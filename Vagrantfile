@@ -45,6 +45,9 @@ forwarded_ports = {
 #   10.0.0.1    - 10.255.255.254
 #   172.16.0.1  - 172.31.255.254
 #   192.168.0.1 - 192.168.255.254
+
+# TODO: Give this VM a unqiue IP address from other projects
+#       if you want them to be able to run at the same time.
 server_ip             = "192.168.22.10"
 server_cpus           = "1"   # Cores
 server_memory         = "2048" # MB
