@@ -4,7 +4,7 @@
 function show_usage {
 cat <<EOF
 
-NGXCB:
+NGXCP:
 Create a new Nginx Server Proxy Block (Ubuntu Server).
 Assumes /etc/nginx/sites-available and /etc/nginx/sites-enabled setup used.
 
