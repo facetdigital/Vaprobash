@@ -4,7 +4,7 @@ echo ">>> Installing Mailcatcher"
 
 # Test if PHP is installed
 php -v > /dev/null 2>&1
-PHP_IS_INSTALLED=$1
+PHP_IS_INSTALLED=$?
 
 # Test if Apache is installed
 apache2 -v > /dev/null 2>&1
