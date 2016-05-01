@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Check if RVM is installed
-RVM -v > /dev/null 2>&1
+rvm -v > /dev/null 2>&1
 RVM_IS_INSTALLED=$?
 
 # Contains all arguments that are passed
@@ -36,20 +36,20 @@ else
         echo ">>> Installing Ruby Version Manager and installing latest stable Ruby version"
 
         # Install RVM and install latest stable Ruby version
-        \curl -sSL https://get.rvm.io | bash -s stable --ruby
+        \curl -sSL https://get.rvm.io | sudo bash -s stable --ruby
     else
         echo ">>> Installing Ruby Version Manager and installing Ruby version: $1"
 
         # Install RVM and install selected Ruby version
-        \curl -sSL https://get.rvm.io | bash -s stable --ruby=$RUBY_VERSION
+        \curl -sSL https://get.rvm.io | sudo bash -s stable --ruby=$RUBY_VERSION
     fi
 
     # Re-source RVM
-    . /home/vagrant/.rvm/scripts/rvm
+    . /usr/local/rvm/scripts/rvm
 
-    # Re-source .profile if exists
-    if [[ -f "/home/vagrant/.profile" ]]; then
-        . /home/vagrant/.profile
+    # Re-source /etc/profile.d/rvm.sh if exists
+    if [[ -f "/etc/profile.d/rvm.sh" ]]; then
+        . /etc/profile.d/rvm.sh
     fi
 fi
 
