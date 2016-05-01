@@ -2,6 +2,12 @@
 
 echo ">>> Initializing Rails App"
 
+echo ">>>>>>>>>> whoami:"
+whoami
+
+echo ">>>>>>>>>> which rvm:"
+which rvm
+
 echo ">>>>>>>>>> sourcing rvm"
 . /usr/local/rvm/scripts/rvm
 echo ">>>>>>>>>> sourcing rvm.sh"
