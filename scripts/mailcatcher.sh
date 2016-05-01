@@ -19,6 +19,7 @@ if $(which rvm) -v > /dev/null 2>&1; then
 	$(which rvm) default@mailcatcher --create do gem install --no-rdoc --no-ri mailcatcher
 	$(which rvm) wrapper default@mailcatcher --no-prefix mailcatcher catchmail
 else
+    echo ">>>>Installing with system ruby"
 	# Gem check
 	if ! gem -v > /dev/null 2>&1; then sudo aptitude install -y libgemplugin-ruby; fi
 
