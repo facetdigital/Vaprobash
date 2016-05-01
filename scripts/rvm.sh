@@ -64,5 +64,7 @@ fi
 sudo usermod -a -G rvm vagrant
 
 # Automatically ignore the .rvmrc warning in our app project directory.
+rvmsudo rvmrc warning ignore /vagrant/.rvmrc
+
 # Automatically trust any .rvmrc in our app project directory.
-su -l vagrant -c "rvm rvmrc warning ignore /vagrant/.rvmrc && rvm rvmrc trust /vagrant/.rvmrc"
+rvmsudo rvmrc trust /vagrant/.rvmrc"
