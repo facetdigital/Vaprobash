@@ -5,6 +5,8 @@ public_folder="/vagrant"
 
 for proxy in "$@"
 do
+  hostname=${proxy%%:*}
+  port=${proxy#*:}
   # Create Nginx Server Proxy Block and enable it
   sudo ngxcp -d $public_folder -n $hostname -s $hostname -p $port -e
 done
