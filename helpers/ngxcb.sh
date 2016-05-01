@@ -162,8 +162,8 @@ cat <<EOF
         # Make site accessible from ...
         server_name $ServerName;
 
-        access_log /var/log/nginx/$ServerName-access.log;
-        error_log  /var/log/nginx/$ServerName-error.log error;
+        access_log /var/log/nginx/vagrant.com-access.log;
+        error_log  /var/log/nginx/vagrant.com-error.log error;
 
         charset utf-8;
 
