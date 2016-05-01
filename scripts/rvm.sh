@@ -53,6 +53,9 @@ else
     fi
 fi
 
+# Add vagrant user to rvm group
+sudo usermod -a -G rvm vagrant
+
 # Install (optional) Ruby Gems
 if [[ ! -z $RUBY_GEMS ]]; then
     echo ">>> Start installing Ruby Gems"
@@ -60,5 +63,3 @@ if [[ ! -z $RUBY_GEMS ]]; then
     sudo gem install ${RUBY_GEMS[@]}
 fi
 
-# Add vagrant user to rvm group
-sudo usermod -a -G rvm vagrant
