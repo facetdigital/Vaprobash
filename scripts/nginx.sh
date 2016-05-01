@@ -59,8 +59,9 @@ usermod -a -G www-data vagrant
 curl --silent -L $github_url/helpers/ngxen.sh > ngxen
 curl --silent -L $github_url/helpers/ngxdis.sh > ngxdis
 curl --silent -L $github_url/helpers/ngxcb.sh > ngxcb
-sudo chmod guo+x ngxen ngxdis ngxcb
-sudo mv ngxen ngxdis ngxcb /usr/local/bin
+curl --silent -L $github_url/helpers/ngxcp.sh > ngxcp
+sudo chmod guo+x ngxen ngxdis ngxcb ngxcp
+sudo mv ngxen ngxdis ngxcb ngxcp /usr/local/bin
 
 # Create Nginx Server Block named "vagrant" and enable it
 sudo ngxcb -d $public_folder -s "$1.xip.io$hostname" -e
