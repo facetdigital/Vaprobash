@@ -1,18 +1,28 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Config Github Settings
+#------------------------------------------------------------
+# GitHub Configuration - Set specific branch if needed
+#------------------------------------------------------------
 github_username = "facetdigital"
 github_repo     = "Vaprobash"
-github_branch   = "master"
+github_branch   = "master" # TODO: Set to a tag or branch if needed 
 github_url      = "https://raw.githubusercontent.com/#{github_username}/#{github_repo}/#{github_branch}"
 
-# Because this:https://developer.github.com/changes/2014-12-08-removing-authorizations-token/
-# https://github.com/settings/tokens
+# Because this:
+#   https://developer.github.com/changes/2014-12-08-removing-authorizations-token/
+#   https://github.com/settings/tokens
 github_pat          = ""
 
-# Server Configuration
 
+#------------------------------------------------------------
+# Server Configuration - Edit these to be project-specific
+#------------------------------------------------------------
+
+# TODO: Set a base hostname based on project name.
+#         E.g. "mycoolapp.test"
+#       And update the list of subdomain hostnames you
+#       might want.
 hostname             = "vaprobash.test"
 additional_hostnames = [
   "app.#{hostname}",
@@ -37,6 +47,11 @@ server_swap           = "2048" # Options: false | int (MB) - Guideline: Between 
 # US/Central for American Central
 # US/Eastern for American Eastern
 server_timezone  = "UTC"
+
+
+#------------------------------------------------------------
+# Package Settings - Good Defaults, Customize as Needed
+#------------------------------------------------------------
 
 # Database Configuration
 mysql_root_password   = "root"   # We'll assume user "root"
@@ -93,6 +108,11 @@ rabbitmq_password = "password"
 sphinxsearch_version  = "rel22" # rel20, rel21, rel22, beta, daily, stable
 
 elasticsearch_version = "2.3.1" # 5.0.0-alpha1, 2.3.1, 2.2.2, 2.1.2, 1.7.5
+
+
+#------------------------------------------------------------
+# VM Settings - Should not need to customize per project
+#------------------------------------------------------------
 
 Vagrant.configure("2") do |config|
 
@@ -195,6 +215,11 @@ Vagrant.configure("2") do |config|
     provider.region = 'nyc2'
     provider.size = '512mb'
   end
+
+
+  #------------------------------------------------------------
+  # Choose Packages - TODO: Uncomment those needed for the project
+  #------------------------------------------------------------
 
   ####
   # Base Items
