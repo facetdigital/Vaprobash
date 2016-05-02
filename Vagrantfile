@@ -21,14 +21,19 @@ github_pat          = ""
 
 # TODO: Set a base hostname based on project name.
 #         E.g. "mycoolapp.test"
-#       And update the list of subdomain hostnames you
-#       might want.
-hostname             = "vaprobash.test"
-additional_hostnames = [
-  "app.#{hostname}",
-  "mail.#{hostname}",
-  "search.#{hostname}"
-]
+hostname = "vaprobash.test"
+
+# TODO: Set up any vhosts you want. These will be added to
+#       the host machine's /etc/hosts and internally,
+#       if nginx is installed, it will have virtual hosts
+#       setup on these names to proxy to the specified
+#       localhost ports within the guest.
+vhosts = {
+  # "vhostname.#{hostname}" => upstream_port
+  "app.#{hostname}"    => 3000,
+  "mail.#{hostname}"   => 1080,
+  #"search.#{hostname}" => 9200"
+}
 
 # TODO: If you want any host ports forwarded to guest ports,
 #       add them here:
@@ -82,6 +87,7 @@ php_timezone          = "UTC"    # http://php.net/manual/en/timezones.php
 php_version           = "5.6"    # Options: 5.5 | 5.6
 ruby_version          = "latest" # Choose what ruby version should be installed (will also be the default version)
 ruby_gems             = [        # List any Ruby Gems that you want to install
+  "bundler",
   #"jekyll",
   #"sass",
   #"compass",
@@ -149,7 +155,7 @@ Vagrant.configure("2") do |config|
   # This will point to the server's default virtual host
   config.vm.hostname = hostname
   if Vagrant.has_plugin?("vagrant-ghost")
-    config.ghost.hosts = additional_hostnames
+    config.ghost.hosts = vhosts.keys
   end
 
   # Create a static IP
@@ -271,6 +277,9 @@ Vagrant.configure("2") do |config|
   # Provision Nginx Base
   # config.vm.provision "shell", path: "#{github_url}/scripts/nginx.sh", args: [server_ip, public_folder, hostname, github_url]
 
+  # Provision Nginx Proxies
+  # config.vm.provision "shell", path: "#{github_url}/scripts/nginx-proxies.sh", args: vhosts.map{|name,port| "#{name}:#{port}"}
+
 
   ####
   # Databases
@@ -364,7 +373,7 @@ Vagrant.configure("2") do |config|
   # Additional Languages
   ##########
 
-  # Install Nodejs
+  # Install Nodejs - NOTE: required for ExecJS in most of our Rails projects!
   # config.vm.provision "shell", path: "#{github_url}/scripts/nodejs.sh", privileged: false, args: nodejs_packages.unshift(nodejs_version, github_url)
 
   # Install Ruby Version Manager (RVM)
@@ -401,6 +410,13 @@ Vagrant.configure("2") do |config|
 
   # Install Android
   # config.vm.provision "shell", path: "#{github_url}/scripts/android.sh"
+
+  ####
+  # App Projects
+  ##########
+
+  # Rails App
+  # config.vm.provision "shell", path: "#{github_url}/scripts/app-rails-install.sh"
 
   ####
   # Local Scripts
