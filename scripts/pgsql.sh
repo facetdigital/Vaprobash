@@ -4,9 +4,6 @@ echo ">>> Installing PostgreSQL"
 
 [[ -z "$1" ]] && { echo "!!! PostgreSQL root password not set. Check the Vagrant file."; exit 1; }
 
-# Set some variables
-POSTGRE_VERSION=9.5
-
 # Add PostgreSQL GPG public key
 # to get latest stable
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
@@ -23,6 +20,8 @@ sudo apt-get update
 # -qq implies -y --force-yes
 sudo apt-get install -qq postgresql postgresql-contrib libpq-dev
 
+# Get the version that was installed
+POSTGRE_VERSION=`ls -1 /etc/postgresql | sort | tail -1`
 
 # Configure PostgreSQL
 
