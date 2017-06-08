@@ -56,6 +56,8 @@ fi
 # Add vagrant user to rvm group
 sudo usermod -a -G rvm vagrant
 
+echo "rvm_silence_path_mismatch_check_flag=1" >> /home/vagrant/.rvmrc
+
 # Install (optional) Ruby Gems
 if [[ ! -z $RUBY_GEMS ]]; then
     echo ">>> Start installing Ruby Gems"
