@@ -10,6 +10,11 @@ RUBY_ARG=($@)
 # Number of arguments that are given
 NUMBER_OF_ARG=${#RUBY_ARG[@]}
 
+# Where to get RVM installer from
+# RVM_INSTALLER_URL=https://get.rvm.io
+# Use stable installer instead of standard installer, because of https://github.com/rvm/rvm/issues/4068
+RVM_INSTALLER_URL=https://raw.githubusercontent.com/wayneeseguin/rvm/stable/binscripts/rvm-installer
+
 # Prepare the variables for installing specific Ruby version and Gems
 if [[ $NUMBER_OF_ARG -gt 1 ]]; then
     # Both Ruby version and Gems are given
@@ -36,12 +41,12 @@ else
         echo ">>> Installing Ruby Version Manager and installing latest stable Ruby version"
 
         # Install RVM and install latest stable Ruby version
-        \curl -sSL https://get.rvm.io | sudo bash -s stable --ruby
+        \curl -sSL $RVM_INSTALLER_URL | sudo bash -s stable --ruby
     else
         echo ">>> Installing Ruby Version Manager and installing Ruby version: $1"
 
         # Install RVM and install selected Ruby version
-        \curl -sSL https://get.rvm.io | sudo bash -s stable --ruby=$RUBY_VERSION
+        \curl -sSL $RVM_INSTALLER_URL | sudo bash -s stable --ruby=$RUBY_VERSION
     fi
 
     # Re-source RVM
@@ -56,6 +61,7 @@ fi
 # Add vagrant user to rvm group
 sudo usermod -a -G rvm vagrant
 
+# Allow us to play nice with NodeJS
 echo "rvm_silence_path_mismatch_check_flag=1" >> /home/vagrant/.rvmrc
 
 # Install (optional) Ruby Gems
