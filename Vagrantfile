@@ -411,6 +411,9 @@ Vagrant.configure("2") do |config|
   # Install Android
   # config.vm.provision "shell", path: "#{github_url}/scripts/android.sh"
 
+  # Install ImageMagick
+  #config.vm.provision "shell", path: "#{github_url}/scripts/imagemagick.sh"
+
   ####
   # App Projects
   ##########
