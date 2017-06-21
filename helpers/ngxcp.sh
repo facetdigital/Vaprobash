@@ -47,6 +47,7 @@ cat <<EOF
         error_log  /var/log/nginx/$ServerName-error.log error;
 
         charset utf-8;
+        client_max_body_size 10M;
 
         location / {
             proxy_set_header X-Real-IP \$remote_addr;
@@ -75,6 +76,7 @@ cat <<EOF
         error_log  /var/log/nginx/$ServerName-error.log error;
 
         charset utf-8;
+        client_max_body_size 10M;
 
         location / {
             proxy_set_header X-Real-IP \$remote_addr;
