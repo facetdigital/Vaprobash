@@ -3,6 +3,11 @@
 echo ">>> Installing PostgreSQL"
 
 [[ -z "$1" ]] && { echo "!!! PostgreSQL root password not set. Check the Vagrant file."; exit 1; }
+if [[ -z "$2" ]]; then
+  pgsql_version="latest"
+else
+  pgsql_version="$2"
+fi
 
 # Add PostgreSQL GPG public key
 # to get latest stable
@@ -18,7 +23,11 @@ sudo apt-get update
 
 # Install PostgreSQL
 # -qq implies -y --force-yes
-sudo apt-get install -qq postgresql postgresql-contrib libpq-dev
+if [ "$pgsql_version" == "latest" ]; then
+  sudo apt-get install -qq postgresql postgresql-contrib libpq-dev
+else
+  sudo apt-get install -qq postgresql-$pgsql_version postgresql-contrib-$pgsql_version libpq-dev
+fi
 
 # Get the version that was installed
 POSTGRE_VERSION=`ls -1 /etc/postgresql | sort | tail -1`

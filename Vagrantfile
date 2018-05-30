@@ -78,6 +78,7 @@ server_timezone  = "UTC"
 mysql_root_password   = "root"   # We'll assume user "root"
 mysql_version         = "5.5"    # Options: 5.5 | 5.6
 mysql_enable_remote   = "false"  # remote access enabled when true
+pgsql_version         = "latest" # Options: "9.6" | "latest"
 pgsql_root_password   = "root"   # We'll assume user "root"
 mongo_version         = "2.6"    # Options: 2.6 | 3.0
 mongo_enable_remote   = "false"  # remote access enabled when true
@@ -289,7 +290,7 @@ Vagrant.configure("2") do |config|
   # config.vm.provision "shell", path: "#{github_url}/scripts/mysql.sh", args: [mysql_root_password, mysql_version, mysql_enable_remote]
 
   # Provision PostgreSQL
-  # config.vm.provision "shell", path: "#{github_url}/scripts/pgsql.sh", args: pgsql_root_password
+  # config.vm.provision "shell", path: "#{github_url}/scripts/pgsql.sh", args: [pgsql_root_password, pgsql_version]
 
   # Provision SQLite
   # config.vm.provision "shell", path: "#{github_url}/scripts/sqlite.sh"
