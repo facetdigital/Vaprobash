@@ -19,7 +19,7 @@ sudo apt-get update
 
 # Install PostgreSQL
 # -qq implies -y --force-yes
-if [ "$2" eq "latest" ]; then
+if [ "$2" == "latest" ]; then
   sudo apt-get install -qq postgresql postgresql-contrib libpq-dev
 else
   sudo apt-get install -qq postgresql-$2 postgresql-contrib-$2 libpq-dev
