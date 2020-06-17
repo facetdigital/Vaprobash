@@ -256,6 +256,9 @@ Vagrant.configure("2") do |config|
   # optimize base box
   config.vm.provision "shell", path: "#{github_url}/scripts/base_box_optimizations.sh", privileged: true
 
+  # Provision Java Runtime Environment
+  # config.vm.provision "shell", path: "#{github_url}/scripts/jre.sh"
+
   # Provision PHP
   #config.vm.provision "shell", path: "#{github_url}/scripts/php.sh", args: [php_timezone, hhvm, php_version]
 
